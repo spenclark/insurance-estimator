@@ -10,7 +10,6 @@ Backend Server and Node REST API for Walnut Insurance Demo Project
 - [Objectives](#Objectives)
 - [Technologies](#technologies)
 - [API](#API)
-- [License](#license)
 
 ---
 
