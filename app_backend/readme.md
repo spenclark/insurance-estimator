@@ -1,4 +1,4 @@
-#   Back-End
+#   Walnut Insurance Demo Project
 Backend Server and Node REST API for Walnut Insurance Demo Project
 
 ## Contributors
@@ -10,7 +10,6 @@ Backend Server and Node REST API for Walnut Insurance Demo Project
 - [Objectives](#Objectives)
 - [Technologies](#technologies)
 - [API](#API)
-- [License](#license)
 
 ---
 
@@ -31,6 +30,7 @@ This REST API was built using the following tools/libraries:
 - Express
 - Knex
 - PostgreSQL
+- AWS
 
 ---
 
