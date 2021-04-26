@@ -3,10 +3,10 @@ exports.up = function (knex) {
     tbl.uuid("id");
     tbl.string("email", 64);
     tbl.date("DOB");
-    tbl.string("nationality", 64);
-    tbl.jsonb("perks");
-    tbl.integer("coverage");
-    tbl.float("final_rate"); // this float is what gets passback to frontend
+    tbl.string("state", 64); // state state user lives in (not used but important in real practice)
+    tbl.jsonb("perks"); // holds the ID's of the perks the user selected on forums
+    tbl.integer("coverage"); // total coverage user wants
+    tbl.integer("estimated_cost");
   });
 };
 

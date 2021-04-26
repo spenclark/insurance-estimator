@@ -1,12 +1,12 @@
 exports.up = function (knex) {
-  // This is a model that we apply to the CreateUser database
-  // its meant to algorithmically demonstrate an insurance companies underwriting method to a client so they can understand the costs vs the LTV
+  // This is a schema for a simple underwriting model that will be feed into formula
+  // its meant to algorithmically demonstrate an insurance companies underwriting method so that we can return a value propisiton to a user
   // Check seed directory in ../seeds for to see an example written directly into the DB
   return knex.schema.createTable("policy_model", (tbl) => {
     tbl.uuid("id");
-    tbl.string("f_name", 100); // will be a single form input on front end, use string method to split
-    tbl.string("l_name", 100);
-    tbl.tbl.float("final_rate"); // this float is what gets passback to frontend
+    tbl.string("model_name", 100);
+    tbl.integer("policy_length").defaultTo(20); // for reasons of simplicity this is measured in years
+    tbl.float("risk_rate"); // this is a number that defines the "risk" rate. Here it resembles the needed yeild to cover portolio i.e 1% would be 0.01
   });
 };
 
