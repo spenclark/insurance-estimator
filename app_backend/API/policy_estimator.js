@@ -23,7 +23,7 @@ function estimate_policy(
       (policy_term * 12) +
     perk_sum;
 
-  return expected_value.toFixed(2);
+  return parseFloat(expected_value.toFixed(2));
 }
 
 console.log(
