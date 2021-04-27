@@ -6,8 +6,8 @@ exports.up = function (knex) {
     tbl.uuid("id");
     tbl.string("model_name", 100);
     tbl.integer("policy_term").defaultTo(20); // for reasons of simplicity this is measured in years (standard 20)
-    tbl.float("increasing_risk_per_annum"); // chances the policy holder dies every year as they age
-    tbl.float("claim_rate"); // defines the "" rate say expect pay about 3% of claims to cover portolio i.e 1% would be 0.01
+    tbl.float("risk_rate"); // defines the portfolio goals of the policy. i.e expects to pay out at least 3% worth of claims (<3%)
+    tbl.float("risk_per_annum"); // accounts for the inflation of holder risk as a annual increase. used as exp base
   });
 };
 
