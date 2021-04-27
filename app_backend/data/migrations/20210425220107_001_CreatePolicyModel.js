@@ -6,9 +6,10 @@ exports.up = function (knex) {
     tbl.uuid("id");
     tbl.string("model_name", 100);
     tbl.integer("policy_term").defaultTo(20); // for reasons of simplicity this is measured in years (standard 20)
-    tbl.float("risk_rate"); // defines the portfolio goals of the policy. i.e expects to pay out at least 3% worth of claims (<3%)
-    tbl.float("risk_per_annum"); // accounts for the inflation of holder risk as a annual increase. used as exp base
+    tbl.float("return_rate"); // predicted yeild on float from premiums
+    tbl.float("risk_per_annum"); // used as risk varible to cover chances of payouts and margin. proxy for likleyhood of claim
     tbl.float("discount_rate"); // example: discount on yeilds, express 5% as 0.05
+    tbl.float("management_fees"); // percentage of premiums needed to cover operations
   });
 };
 
