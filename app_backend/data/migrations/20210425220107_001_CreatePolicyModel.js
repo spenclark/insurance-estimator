@@ -5,8 +5,9 @@ exports.up = function (knex) {
   return knex.schema.createTable("policy_model", (tbl) => {
     tbl.uuid("id");
     tbl.string("model_name", 100);
-    tbl.integer("policy_length").defaultTo(20); // for reasons of simplicity this is measured in years
-    tbl.float("risk_rate"); // this is a number that defines the "risk" rate. Here it resembles the needed yeild to cover portolio i.e 1% would be 0.01
+    tbl.integer("policy_term").defaultTo(20); // for reasons of simplicity this is measured in years (standard 20)
+    tbl.float("increasing_risk_per_annum"); // chances the policy holder dies every year as they age
+    tbl.float("claim_rate"); // defines the "" rate say expect pay about 3% of claims to cover portolio i.e 1% would be 0.01
   });
 };
 
