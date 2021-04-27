@@ -13,21 +13,22 @@ function estimate_policy(
   // increment each monthly_cost attr in the perk_array into a varible
   var perk_sum = 0;
   perk_array.forEach((e) => {
-    perk_sum += e.monthly_cost;
+    perk_sum += e.monthly_price;
   });
 
-  return (
+  const expected_value =
     (coverage *
       (risk_rate * (-risk_per_annum + 1) ** policy_term) *
       (-discount_rate + 1)) /
       (policy_term * 12) +
-    perk_sum
-  );
+    perk_sum;
+
+  return expected_value.toFixed(2);
 }
 
 console.log(
   estimate_policy(100000, 20, 0.02, 0.0075, 0.05, [
-    { monthly_cost: 1 },
-    { monthly_cost: 2 },
+    { monthly_price: 1.1 },
+    { monthly_price: 2.35 },
   ])
 );
