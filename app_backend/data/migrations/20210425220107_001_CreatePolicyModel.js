@@ -8,7 +8,10 @@ exports.up = function (knex) {
     tbl.integer("policy_term").defaultTo(20); // for reasons of simplicity this is measured in years (standard 20)
     tbl.float("risk_rate"); // defines the portfolio goals of the policy. i.e expects to pay out at least 3% worth of claims (<3%)
     tbl.float("risk_per_annum"); // accounts for the inflation of holder risk as a annual increase. used as exp base
+    tbl.float("discount_rate"); // example: discount on yeilds, express 5% as 0.05
   });
 };
 
-exports.down = function (knex) {};
+exports.down = function (knex) {
+  return knex.schema.dropTableIfExists("policy_models");
+};

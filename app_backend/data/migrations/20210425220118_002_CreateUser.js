@@ -6,8 +6,10 @@ exports.up = function (knex) {
     tbl.string("state", 64); // state state user lives in (not used but important in real practice)
     tbl.jsonb("perks"); // holds the ID's of the perks the user selected on forums
     tbl.integer("coverage"); // total coverage user wants
-    tbl.integer("estimated_cost");
+    tbl.float("price_of_package");
   });
 };
 
-exports.down = function (knex) {};
+exports.down = function (knex) {
+  return knex.schema.dropTableIfExists("user");
+};
