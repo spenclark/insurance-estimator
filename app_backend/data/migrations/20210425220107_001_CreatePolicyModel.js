@@ -5,7 +5,6 @@ exports.up = function (knex) {
   return knex.schema.createTable("policy_model", (tbl) => {
     tbl.uuid("id");
     tbl.string("model_name", 100);
-    tbl.integer("policy_term").defaultTo(20); // for reasons of simplicity this is measured in years (standard 20)
     tbl.float("return_rate"); // predicted yeild on float from premiums
     tbl.float("risk_per_annum"); // used as risk varible to cover chances of payouts and margin. proxy for likleyhood of claim
     tbl.float("discount_rate"); // example: discount on yeilds, express 5% as 0.05

@@ -29,18 +29,14 @@ function estimate_policy(
   var compounded_monthly_rate =
     compounded_monthly_cost * (1 + return_rate / 12) ** policy_term;
 
-  const estimate_policy = () => {
+  const createMonthlyRate = () => {
+    // lower rates of return should increase cost (behavior wrong here bc RoR is mapped to costs/fees)
     return Math.round(
-      compounded_monthly_rate - compounded_monthly_cost + perk_sum
+      compounded_monthly_rate + compounded_monthly_cost + perk_sum
     );
   };
 
-  return estimate_policy();
+  return createMonthlyRate();
 }
 
-console.log(
-  estimate_policy(150000, 20, 0.04, 0.0325, 0.01, 0.015, [
-    { monthly_price: 1.1 },
-    { monthly_price: 2.35 },
-  ])
-);
+module.exports = estimate_policy();
