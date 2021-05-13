@@ -4,11 +4,18 @@ exports.up = function (knex) {
   // Check seed directory in ../seeds for to see an example written directly into the DB
   return knex.schema.createTable("policy_model", (tbl) => {
     tbl.uuid("id");
+    tbl.timestamp("created_at").defaultTo(knex.fn.now());
+    tbl
+      .uuid("owner_id")
+      .references("id")
+      .inTable("client")
+      .onDelete("CASCADE")
+      .onUpdate("CASCADE");
     tbl.string("model_name", 100);
-    tbl.float("return_rate"); // predicted yeild on float from premiums
-    tbl.float("risk_per_annum"); // used as risk varible to cover chances of payouts and margin. proxy for likleyhood of claim
-    tbl.float("discount_rate"); // example: discount on yeilds, express 5% as 0.05
-    tbl.float("management_fees"); // percentage of premiums needed to cover operations
+    tbl.float("return_rate");
+    tbl.float("risk_per_annum");
+    tbl.float("discount_rate");
+    tbl.float("management_fees");
   });
 };
 

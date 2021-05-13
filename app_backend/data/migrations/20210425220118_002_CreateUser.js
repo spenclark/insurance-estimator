@@ -1,13 +1,22 @@
 exports.up = function (knex) {
   return knex.schema.createTable("user", (tbl) => {
     tbl.uuid("id");
+    tbl.timestamp("created_at").defaultTo(knex.fn.now());
+
     tbl.string("email", 64);
+    tbl.string("f_name", 64);
+    tbl.string("l_name", 64);
     tbl.date("DOB");
-    tbl.string("state", 64); // state state user lives in (not used but important in real practice)
-    tbl.jsonb("perks"); // holds the ID's of the perks the user selected on forums
-    tbl.integer("coverage"); // total coverage user wants
-    tbl.integer("policy_term"); // how long is the user looking for coverage
-    tbl.float("price_of_package");
+    tbl.string("state", 64);
+    tbl.jsonb("perks");
+    tbl.integer("coverage");
+    tbl.integer("policy_term");
+    tbl
+      .uuid("client_id")
+      .references("id")
+      .inTable("policy_model")
+      .onDelete("CASCADE")
+      .onUpdate("CASCADE");
   });
 };
 
