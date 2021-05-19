@@ -44,8 +44,8 @@ BASE URI `tbd.com`
 | GET    | `/api/estimate/:userId`  | False          | Returns an estimate based on the user UUID     |
 | GET    | `/api/policy/:policyName`| True           | Return a policy                                |
 | POST   | `/api/policy`            | True           | Creates a new policy                           |
-| PUT    | `/api/estimate/:userId`  | True           | Edits corresponding user                       |
-| DELETE | `/api/estimate/:userId`  | True           | Deletes corresponding user                     |
-| GET    | `/api/estimate/:userId ` | True           | Returns corresponding user                     |
+
+
+<!-- Adding CRUD functionality would be very easy here, but I kept it simple for readability -->
 
 <br/>
