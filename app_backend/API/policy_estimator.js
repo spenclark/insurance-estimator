@@ -17,18 +17,19 @@ function estimate_policy(
     perk_sum += e.monthly_price;
   });
 
-  // detrimine age from DOB and return a float to be expressed as percentage
-
+  // This assumes the TotalReturn > costadjusted. otherwise it would be an unprofitable policy.
+  // attempts to represent the oppruntity of the premium (TotalReturnCoverage) subtracted by the risk and fees associated with the policy and business divided by the number of months the policy is
   const TotalReturnCoverage = coverage * (1 + return_rate / 12) ** policy_term;
 
   const CostAdjustedCoverage =
     coverage * (1 + (risk_per_annum + management_fees) / 12) ** policy_term;
 
   const TotalAdjustedRate =
-    (TotalReturnCoverage - CostAdjustedCoverage) / (policy_term * 12);
+    ((TotalReturnCoverage - CostAdjustedCoverage) * (1 + -discount_rate)) /
+    (policy_term * 12);
 
   const createMonthlyRate = () => {
-    return TotalAdjustedRate + perk_sum;
+    return parseFloat(TotalAdjustedRate + perk_sum).toFixed(2);
   };
 
   return createMonthlyRate();
