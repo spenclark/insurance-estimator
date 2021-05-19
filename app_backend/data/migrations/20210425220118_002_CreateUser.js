@@ -6,7 +6,7 @@ exports.up = function (knex) {
     tbl.string("email", 64);
     tbl.string("f_name", 64);
     tbl.string("l_name", 64);
-    tbl.date("DOB");
+    tbl.date("DOB"); // YYYYMMDD
     tbl.string("state", 64);
     tbl.jsonb("perks");
     tbl.integer("coverage");
