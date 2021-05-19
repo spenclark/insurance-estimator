@@ -13,6 +13,7 @@ function estimate_policy(
 ) {
   // increment each monthly_cost attr in the perk_array into a varible.
   var perk_sum = 0;
+
   perk_array.forEach((e) => {
     perk_sum += e.monthly_price;
   });
@@ -25,11 +26,12 @@ function estimate_policy(
     coverage * (1 + (risk_per_annum + management_fees) / 12) ** policy_term;
 
   const TotalAdjustedRate =
-    ((TotalReturnCoverage - CostAdjustedCoverage) * (1 + -discount_rate)) /
-    (policy_term * 12);
+    (TotalReturnCoverage - CostAdjustedCoverage) * (1 + -discount_rate);
 
   const createMonthlyRate = () => {
-    return parseFloat(TotalAdjustedRate + perk_sum).toFixed(2);
+    return parseFloat(
+      TotalAdjustedRate / (policy_term * 12) + perk_sum
+    ).toFixed(2);
   };
 
   return createMonthlyRate();
