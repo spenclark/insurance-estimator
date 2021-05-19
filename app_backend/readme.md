@@ -38,15 +38,14 @@ This REST API was built using the following tools/libraries:
 
 BASE URI `tbd.com`
 
-| Method | Endpoint                 | Protected      | Description                                    | 
+| Method | Endpoint                 | Protected      | Route Description                              | 
 | ------ | ------------------------ | -------------- | ---------------------------------------------- |
-| POST   | `/api/input`             | False          | Posts .                  |
-| GET    | `/api/grants/:grantId`   | False          | Returns information for a single grant.        |
-| POST   | `/api/grants`            | False          | Creates a new grant, for admin to approve      |
-| POST   | `/api/grants/suggestion` | False          | Posts a suggestion                             |
-| GET    | `/api/admin`             | True           | Returns all grants including their suggestions |
-| PUT    | `/api/True /:id`         | True           | Edits an existing grant                        |
-| DELETE | `/api/grants/:grantId`   | True           | Deletes an existing grant.                     |
-| GET    | `/api/True `             | True           | Returns all grants including their suggestions |
+| POST   | `/api/estimate`          | False          | Posts the Policy and user objects to server    |
+| GET    | `/api/estimate/:userId`  | False          | Returns an estimate based on the user UUID     |
+| GET    | `/api/policy/:policyName`| True           | Return a policy                                |
+| POST   | `/api/policy`            | True           | Creates a new policy                           |
+| PUT    | `/api/estimate/:userId`  | True           | Edits corresponding user                       |
+| DELETE | `/api/estimate/:userId`  | True           | Deletes corresponding user                     |
+| GET    | `/api/estimate/:userId ` | True           | Returns corresponding user                     |
 
 <br/>
