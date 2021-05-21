@@ -15,7 +15,7 @@ Backend Server and Node REST API for Walnut Insurance Demo Project
 
 ## Objectives and Architecture
 
-This app helps would-be users understand the long-term value of life insurance policies. The model that suggests values and policies is programmatic and can be adapted for different insurance providers. User queries are stored in a SQL database and passed back to the browser as a function to be displayed graphically.
+This app helps would-be users understand the long-term value of life insurance policies. The model that suggests values and policies is programmatic and can be adapted for different insurance providers. User queries are stored and then synthesized w/ a policy sheet and then PUT back onto the user object.
 
 The majority of the logic for this project is placed on the server-side because it would let contributors
 1. Ship complex features faster (e.x data science and analytics)
@@ -41,7 +41,7 @@ BASE URI `tbd.com`
 | Method | Endpoint                 | Protected      | Route Description                              | 
 | ------ | ------------------------ | -------------- | ---------------------------------------------- |
 | POST   | `/api/estimate`          | False          | Posts the Policy and user objects to server    |
-| GET    | `/api/estimate/:userId`  | False          | Returns an estimate based on the user UUID     |
+| GET    | `/api/estimate/:userId`  | False          | Returns an User obj based on the user UUID     |
 | GET    | `/api/policy/:policyName`| True           | Return a policy                                |
 | POST   | `/api/policy`            | True           | Creates a new policy                           |
 
