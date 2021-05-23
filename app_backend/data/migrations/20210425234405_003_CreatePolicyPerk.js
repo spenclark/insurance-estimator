@@ -12,6 +12,12 @@ exports.up = function (knex) {
       .inTable("policy_model")
       .onDelete("CASCADE")
       .onUpdate("CASCADE");
+    tbl
+      .uuid("user_id")
+      .references("id")
+      .inTable("user")
+      .onDelete("CASCADE")
+      .onUpdate("CASCADE");
     tbl.float("monthly_price");
   });
 };

@@ -3,6 +3,7 @@ const db = require("../../data/dbConfig");
 module.exports = {
   findPolicy,
   addPolicy,
+  addClient,
   returnPerks,
 };
 
@@ -11,7 +12,8 @@ function findPolicy(id) {
 }
 
 function addPolicy(input) {
-  return ([id] = await db("policy_model").insert(input, "id"));
+  const [id] = await db("policy_model").insert(input, "id");
+  return id;
 }
 
 function returnPerks(id) {
